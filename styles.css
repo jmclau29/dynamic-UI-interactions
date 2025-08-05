@@ -1,0 +1,41 @@
+.carousel-container {
+    border: 1px solid black;
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.carousel {
+    border: 1px solid red;
+    height: 211px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+}
+
+.slide {
+    height: fit-content;
+    width: 250px;
+}
+
+.slide > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.prev, .next {
+    height: 3rem;
+    width: fit-content;
+    margin: auto;
+    font-size: 2rem;
+}
+
