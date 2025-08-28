@@ -1,18 +1,46 @@
 let carouselManager = () => {
     let slides = document.getElementsByClassName('slide');
-    for (let i = 0; i < slides.length; i++) {
-        
+    if (!document.querySelector('.focus')) {
+        slides[0].classList.add('focus');
     }
+
+
+    let colorFocus = () => {
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].classList.contains('focus')) {
+                slides[i].style.backgroundColor = 'lightgray';
+            } else {
+                slides[i].removeAttribute('style');
+            }
+        }
+    }
+    colorFocus();
 
     let prevButton = document.querySelector('.prev');
     let nextButton = document.querySelector('.next');
 
     prevButton.addEventListener('click', () => {
-
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].classList.contains('focus') && (i != slides[0])) {
+                slides[i].classList.remove('focus');
+                slides[i].previousElementSibling.classList.add('focus');
+                updateFocus();
+                document.querySelector('.focus').scrollIntoView;
+                break;
+            }
+        }
     })
 
     nextButton.addEventListener('click', () => {
-        
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].classList.contains('focus') && i < slides.length) {
+                slides[i].classList.remove('focus');
+                slides[i].nextElementSibling.classList.add('focus');
+                colorFocus();
+                document.querySelector('.focus').scrollIntoView;
+                break;
+            } else break;
+        }
     })
 }
 
