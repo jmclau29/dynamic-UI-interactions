@@ -4,7 +4,6 @@ let carouselManager = () => {
         slides[0].classList.add('focus');
     }
 
-
     let colorFocus = () => {
         for (let i = 0; i < slides.length; i++) {
             if (slides[i].classList.contains('focus')) {
@@ -21,11 +20,14 @@ let carouselManager = () => {
 
     prevButton.addEventListener('click', () => {
         for (let i = 0; i < slides.length; i++) {
+            if (slides[0].classList.contains('focus')) {
+                break;
+            }
             if (slides[i].classList.contains('focus') && (i != slides[0])) {
                 slides[i].classList.remove('focus');
                 slides[i].previousElementSibling.classList.add('focus');
-                updateFocus();
-                document.querySelector('.focus').scrollIntoView;
+                colorFocus();
+                document.querySelector('.focus').scrollIntoView({ behavior: "smooth" });
                 break;
             }
         }
@@ -33,13 +35,16 @@ let carouselManager = () => {
 
     nextButton.addEventListener('click', () => {
         for (let i = 0; i < slides.length; i++) {
+            if (slides[(slides.length - 1)].classList.contains('focus')) {
+                break;
+            }
             if (slides[i].classList.contains('focus') && i < slides.length) {
                 slides[i].classList.remove('focus');
                 slides[i].nextElementSibling.classList.add('focus');
                 colorFocus();
-                document.querySelector('.focus').scrollIntoView;
+                document.querySelector('.focus').scrollIntoView({ behavior: "smooth" });
                 break;
-            } else break;
+            }
         }
     })
 }

@@ -1,5 +1,4 @@
 .carousel-container {
-    border: 1px solid black;
     width: 90%;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -11,7 +10,6 @@
 }
 
 .carousel {
-    border: 1px solid red;
     height: 211px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
